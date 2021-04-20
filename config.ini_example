@@ -1,0 +1,12 @@
+[database]
+host = 'local.host'
+port = 3306
+user = 'mysql_user'
+passwd = 'password'
+
+[foursquare_api]
+user_key = ''
+user_secret = ''
+
+[google_api]
+key = ''
