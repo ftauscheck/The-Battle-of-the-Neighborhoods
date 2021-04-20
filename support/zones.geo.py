@@ -2,6 +2,7 @@ import json
 import MySQLdb
 import configparser
 
+
 config = configparser.ConfigParser()
 config.read('config.ini')
 database = config['database']
