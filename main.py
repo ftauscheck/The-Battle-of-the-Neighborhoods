@@ -6,3 +6,5 @@ config['database']['host']
 
 for key in config['database']:  
     print(key)
+
+    
