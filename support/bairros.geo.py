@@ -14,7 +14,7 @@ db = MySQLdb.connect(host = database['host'],
 cur = db.cursor()
 
 with open('bairros.geo.json') as json_file:
-    insert = 'INSERT INTO project.geo_neighbor (id, type, name, area, regional_id, regional_name, geometry) VALUES ('
+    insert = 'INSERT INTO project.geo_neighbour (id, type, name, area, regional_id, regional_name, geometry) VALUES ('
     data = json.load(json_file)
     for f in data['features']:
         id = f['properties']['codigo']
