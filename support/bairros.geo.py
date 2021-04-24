@@ -13,7 +13,7 @@ db = MySQLdb.connect(host = database['host'],
 
 cur = db.cursor()
 
-with open('bairros.geo.json') as json_file:
+with open('support/bairros.geojson') as json_file:
     insert = 'INSERT INTO project.geo_neighbour (id, type, name, area, regional_id, regional_name, geometry) VALUES ('
     data = json.load(json_file)
     for f in data['features']:
@@ -24,9 +24,9 @@ with open('bairros.geo.json') as json_file:
         regional_id = f['properties']['codigo_regional']
         regional_name = f['properties']['nome_regional']
         geometry = json.dumps(f['geometry'])
-        sql_insert = insert + str(id) + ', \''+ type + '\', \'' + name + '\', ' + str(area) + ', ' + str(regional_id) + ', \'' + regional_name + '\', ST_GeomFromGeoJSON(\'' + geometry + '\'));'
-        #print(name)
-        #print(geometry)
+        sql_insert = insert + str(id) + ', \''+ type + '\', \'' + name + '\', ' + str(area) + ', ' + str(regional_id) + ', \'' + regional_name + '\', ST_SwapXY(ST_GeomFromGeoJSON(\'' + geometry + '\')));'
+        #print(sql_insert)
+        #exit()
         cur.execute(sql_insert)
         print(" .")
 db.commit()

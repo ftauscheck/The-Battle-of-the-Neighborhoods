@@ -1,12 +1,12 @@
 [database]
-host = 'local.host'
+host = local.host
 port = 3306
-user = 'mysql_user'
-passwd = 'password'
+user = mysql_user
+passwd = password
 
 [foursquare_api]
-user_key = ''
-user_secret = ''
+user_key = AA
+user_secret = BB
 
 [google_api]
-key = ''
+key = CC

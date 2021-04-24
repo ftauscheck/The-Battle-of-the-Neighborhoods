@@ -14,7 +14,7 @@ db = MySQLdb.connect(host = database['host'],
 
 cur = db.cursor()
 x = 1
-with open('zones.geo.json') as json_file:
+with open('support/zones.geojson') as json_file:
     insert = 'INSERT INTO project.geo_zones (nm_groups, cd_zone, nm_zone, sg_zone, geometry) VALUES ('
     data = json.load(json_file)
     for f in data['features']:
@@ -24,7 +24,7 @@ with open('zones.geo.json') as json_file:
             nm_zone =  f['properties']['NM_ZONA']
             sg_zone = f['properties']['SG_ZONA']
             geometry = json.dumps(f['geometry'])
-            sql_insert = insert + ' \''+ nm_groups + '\', \'' + cd_zone + '\', \'' + nm_zone + '\', \'' + sg_zone + '\', ST_GeomFromGeoJSON(\'' + geometry + '\'));'
+            sql_insert = insert + ' \''+ nm_groups + '\', \'' + cd_zone + '\', \'' + nm_zone + '\', \'' + sg_zone + '\', ST_SwapXY(ST_GeomFromGeoJSON(\'' + geometry + '\')));'
             #print(geometry)
             #exit()
             #print(sql_insert)

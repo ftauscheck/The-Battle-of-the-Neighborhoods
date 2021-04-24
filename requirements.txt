@@ -1,0 +1,6 @@
+mysqlclient
+configparser
+requests
+unidecode
+bs4
+html5lib
