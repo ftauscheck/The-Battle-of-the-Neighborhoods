@@ -4,3 +4,4 @@ config.ini
 __pycache__/config.cpython-39.pyc
 .venv/
 .vscode/
+extra/

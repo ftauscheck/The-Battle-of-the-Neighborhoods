@@ -4,3 +4,7 @@ requests
 unidecode
 bs4
 html5lib
+pandas
+numpy
+wheel
+plotly
