@@ -1,7 +1,7 @@
-.vscode/settings.json
-config.py
-config.ini
-__pycache__/config.cpython-39.pyc
 .venv/
 .vscode/
+.ipynb_checkpoints/
+__pycache__/config.cpython-39.pyc
 extra/
+config.py
+config.ini

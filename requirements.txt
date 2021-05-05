@@ -1,5 +1,4 @@
-wheel
-mysqlclient
+mysql-connector-python
 configparser
 requests
 unidecode

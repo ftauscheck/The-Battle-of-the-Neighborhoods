@@ -13,8 +13,9 @@ db = MySQLdb.connect(host = database['host'],
                      passwd = database['passwd'])
 
 cur = db.cursor()
-
-with open('support/GeoJSON/Curitiba_neighbourhood.geojson') as json_file:
+cur.execute("TRUNCATE project.geo_neighbourhood;")
+x = 0
+with open('support/GeoJSON/Curitiba_neighbourhood.geojson', encoding='utf-8') as json_file:
     insert = 'INSERT INTO project.geo_neighbourhood (id, type, neighbourhood, norm_neighbourhood, area, sectional_id, sectional_name, geometry) VALUES ('
     data = json.load(json_file)
     for f in data['features']:
@@ -26,8 +27,21 @@ with open('support/GeoJSON/Curitiba_neighbourhood.geojson') as json_file:
         sectional_id = f['properties']['CD_REGIONA']
         sectional_name = f['properties']['NM_REGIONA']
         geometry = json.dumps(f['geometry'])
-        sql_insert = insert + str(id) + ', \''+ type + '\', \'' + neighbourhood + '\', \'' + norm_neighbourhood + '\', ' + str(area) + ', ' + str(sectional_id) + ', \'' + sectional_name + '\', ST_SwapXY(ST_GeomFromGeoJSON(\'' + geometry + '\')));'
+        sql_insert = insert + str(id) + ', \''+ type + '\', \'' + neighbourhood + '\', \'' + norm_neighbourhood + '\', ' + str(area) + ', ' + str(sectional_id)+ ', \'' + sectional_name + '\', ST_GeomFromGeoJSON(\'' + geometry + '\'));'
         cur.execute(sql_insert)
-        print(" .")
+        x = x + 1
 db.commit()
+print('INSERT {}'.format(x))
+
+x = 0
+with open('support/GeoJSON/Curitiba_neighbourhood_simplify.geojson', encoding='utf-8') as json_file:
+    data = json.load(json_file)
+    for f in data['features']:
+        id = f['properties']['CODIGO']
+        geometry = json.dumps(f['geometry'])
+        sql_update = 'UPDATE project.geo_neighbourhood SET geometry_simple = ST_GeomFromGeoJSON(\'' + geometry + '\') WHERE id = ' + str(id) + ';'
+        cur.execute(sql_update)
+        x = x + 1
+db.commit()
+print('UPDATE {}'.format(x))
 db.close()
