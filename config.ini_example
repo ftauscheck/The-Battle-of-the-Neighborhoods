@@ -7,6 +7,10 @@ passwd = password
 [foursquare_api]
 user_key = AA
 user_secret = BB
+version = 20210401
 
 [google_api]
 key = CC
+
+[mapbox_api]
+key = DD

@@ -3,5 +3,6 @@
 .ipynb_checkpoints/
 __pycache__/config.cpython-39.pyc
 extra/
+support/GeoJSON/old/
 config.py
 config.ini
