@@ -1,4 +1,5 @@
 mysql-connector-python
+ipython-autotime
 configparser
 requests
 unidecode
