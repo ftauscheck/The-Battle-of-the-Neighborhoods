@@ -1,4 +1,5 @@
 mysql-connector-python
+conda install -c conda-forge psycopg2
 ipython-autotime
 configparser
 requests

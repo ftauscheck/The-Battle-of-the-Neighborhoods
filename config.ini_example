@@ -4,6 +4,12 @@ port = 3306
 user = mysql_user
 passwd = password
 
+[postgis]
+host = local.host
+port = 5432
+user = postgres
+passwd = password
+
 [foursquare_api]
 user_key = AA
 user_secret = BB
