@@ -1,9 +1,3 @@
-[database]
-host = local.host
-port = 3306
-user = mysql_user
-passwd = password
-
 [postgis]
 host = local.host
 port = 5432
