@@ -2,10 +2,13 @@
 
 Suport scripts to Project Capstone of 'IBM Data Science' course on Coursera.
 
-* bairros.geojson: Neighbourhoor GeoJSON file from IPPUC (https://ippuc.org.br/geodownloads/geo.htm converted to WGS84)
-* bairros.geo.py: Script to insert the GeoJSON objects to a MySQL 8 table
-* zones.geojson: Municipal zoning in GeoJSON file from IPPUC (https://ippuc.org.br/geodownloads/geo.htm converted to WGS84)
-* zones.geo.py: Script to insert the GeoJSON objects to a MySQL 8 table
-* main_streets.geojson: Most importants streets (Streets with bus line, collector road, avenues, ...)
-* main_streets.py:  Script to insert the GeoJSON objects to a MySQL 8 table
-* SQL directory: List of SQL files to recreate the database (must be MySQL 8.0).
+All scripts contained in this folder are included in the Jupyter Notebook of this project.
+
+* Scripts to insert the GeoJSON objects to a PostgreSQL (POSTGIS) table:
+    * import_geo_main_streets postgis.py
+    * import_geo_extras postgis.py
+    * import_geo_master_plan postgis.py
+    * import_geo_neighbourhood_postgis.py
+* Script to parse the Wikipedia page of Curitiba Neighborhoods (https://pt.wikipedia.org/wiki/Lista_de_bairros_de_Curitiba)
+* GeoJSON directory: GeoJSON files
+* SQL directory: Database dump of database (PostgreSQL).
