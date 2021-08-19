@@ -11,4 +11,4 @@ All scripts contained in this folder are included in the Jupyter Notebook of thi
     * import_geo_neighbourhood_postgis.py
 * Script to parse the Wikipedia page of Curitiba Neighborhoods (https://pt.wikipedia.org/wiki/Lista_de_bairros_de_Curitiba)
 * GeoJSON directory: GeoJSON files
-* SQL directory: Database dump of database (PostgreSQL).
+* SQL directory: Database dump (PostgreSQL).
