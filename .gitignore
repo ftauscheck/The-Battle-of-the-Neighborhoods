@@ -4,8 +4,8 @@
 __pycache__/config.cpython-39.pyc
 extra/
 support/GeoJSON/old/
-SQL/
 Reports/
+PostGisQuery/
 *.parquet
 config.py
 config.ini
