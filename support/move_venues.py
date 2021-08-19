@@ -33,7 +33,7 @@ from geopy import distance
 config = configparser.ConfigParser()
 config.read('config.ini')
 database = config['database']
-database = config['postgis']
+database2 = config['postgis']
 
 mysql = MySQLdb.connect(host = database['host'],
                      port = int(database['port']),
@@ -42,7 +42,7 @@ mysql = MySQLdb.connect(host = database['host'],
 
 cur_mysql = mysql.cursor()
 
-conn_string = "host='"+ database['host'] +"' user='" + database['user'] + "' password='"+ database['passwd']+"'"
+conn_string = "host='"+ database2['host'] +"' user='" + database2['user'] + "' password='"+ database2['passwd']+"'"
 psql = psycopg2.connect(conn_string)
 cur_psql = psql.cursor()
 
@@ -61,11 +61,11 @@ for record in cur_mysql:
     categories = record[5]
     tipCount = record[6]
     tier = record[7]
-    likes = record[8]
-    rating = record[9]
+    rating = record[8]
+    likes = record[9]
     verified = record[10]
     area = return_circle(azimuth_step, radius, lat, long)
-    sql_insert = 'INSERT INTO project.foursquare_venues (id, name, lat, long, geo_point, address, categories, tipCount, tier, rating, likes, verified, area) VALUES (%s, %s, %s, %s, CAST(ST_SetSRID(ST_Point(%s, %s), 4326) AS geography), %s, %s, %s, %s, %s, %s, %s, CAST(ST_SetSRID(ST_MakePolygon( ST_GeomFromText(%s)), 4326) AS geography));'
+    sql_insert = 'INSERT INTO project.foursquare_venues (id, name, lat, long, geo_point, address, categories, tipCount, tier, rating, likes, verified, area) VALUES (%s, %s, %s, %s, CAST(ST_SetSRID(ST_Point(%s, %s), 4326) AS geometry), %s, %s, %s, %s, %s, %s, %s, CAST(ST_SetSRID(ST_MakePolygon( ST_GeomFromText(%s)), 4326) AS geometry));'
     cur_psql.execute(sql_insert, (id, name, lat, long, long, lat, address, categories, tipCount, tier, rating, likes, verified, area))
     x += 1
 psql.commit()
